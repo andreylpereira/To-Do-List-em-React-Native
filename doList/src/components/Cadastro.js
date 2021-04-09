@@ -1,25 +1,51 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-
-
+// Importei tambem o TouchableOpacity
+// Importei o axios
+import api from '../services/axios';
 
 const Cadastro = ({ navigation }) => {
+  // Criei uma constante com os valores da nossa lista
+  const [nomeLista, setNomeLista] = useState("");
+  const [descricaoLista, setDescricaoLista] = useState("");
+  const [dataLista, setDataLista] = useState("");
 
+  // Criei uma constante que valida a nossa lista e adicionei o método post
+  const createLista = async () => {
 
+    if (nomeLista && descricaoLista && dataLista){
+      try{
+        const response = await api.post('/', {"nome": nomeLista, "descricao": descricaoLista, "data": dataLista});
+        console.log(JSON.stringify(response.data));
+      } catch (error) {
+        console.log("DEU RUIM" + error);
+      }
+    } else {
+      console.log("Vazio")
+    }
+  }
+  
+  // adicionei os valores da lista dentro do valor do campo e adicionei o onChange que set a variavel
   return (
     <>
-
       <View style={css.container}>
 
         <Text style={css.label}>Nome:</Text>
-        <TextInput style={css.input}></TextInput>
+        <TextInput style={css.input}  value={nomeLista} onChangeText={item => {
+          setNomeLista(item)
+        }}></TextInput>
 
         <Text style={css.label}>Descrição:</Text>
-        <TextInput style={css.inputDescricao} multiline={true}></TextInput>
-        <Text style={css.label}>Data:</Text>
-        <TextInput style={css.input}></TextInput>
+        <TextInput style={css.inputDescricao} multiline={true} value={descricaoLista} onChangeText={item => {
+          setDescricaoLista(item)
+        }}></TextInput>
 
-        <TouchableOpacity style={css.button}>
+        <Text style={css.label}>Data:</Text>
+        <TextInput style={css.input} value={dataLista} onChangeText={item => {
+          setDataLista(item)
+        }}></TextInput>
+
+        <TouchableOpacity style={css.button} onPress={createLista}>
           <Text style={css.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
 
