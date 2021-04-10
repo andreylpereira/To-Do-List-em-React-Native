@@ -14,7 +14,7 @@ const Index = ({navigation}) => {
               <Text style={css.buttonText}>Adicionar</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={css.button}  onPress={() => navigation.navigate('Cadastro')}>
+              <TouchableOpacity style={css.button}  onPress={() => navigation.navigate('Editar')}>
                 <Text style={css.buttonText}>Editar</Text>
               </TouchableOpacity>
 
@@ -31,7 +31,7 @@ const Index = ({navigation}) => {
 const css = StyleSheet.create({
 
   container: {
-    backgroundColor: '#EDEDE9',
+    backgroundColor: '#FFFFFF',
     flex: 1,
     height: '100%',
     borderColor: '#410CF5',
@@ -44,9 +44,9 @@ const css = StyleSheet.create({
   },
   button: {
     borderWidth: 2,
-    borderColor: '#410CF5',
+    borderColor: '#DE890B',
     borderRadius: 20,
-    backgroundColor: '#F5B319',
+    backgroundColor: '#F5D100',
     width: 250,
     height: 50,
     alignItems: 'center',

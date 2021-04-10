@@ -16,6 +16,7 @@ import Index from './components/Index'
 import Cadastro from './components/Cadastro'
 import Home from './components/Home'
 import Lista from './components/Lista'
+import Editar from './components/Editar';
 
 
 const Stack = createStackNavigator();
@@ -25,7 +26,7 @@ function Tabs() {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        activeTintColor: '#F5B319',
+        activeTintColor: '#F5D100',
         inactiveTintColor: '#EDEDE9',
 
         labelStyle: {
@@ -62,7 +63,7 @@ function Tabs() {
         }}
       />
 
-      <Tab.Screen name="MENU"
+      {/* <Tab.Screen name="MENU"
         component={Index}
         options={{
           tabBarLabel: 'MENU',
@@ -70,7 +71,7 @@ function Tabs() {
             <Icon name="menu" color={color} size={size} />
           ),
         }}
-      />
+      /> */}
 
     </Tab.Navigator>
   )
@@ -97,11 +98,11 @@ const App = () => {
                 </View>
               ),
               headerTintColor: '#EDEDE9',
-              headerTitleStyle: { marginLeft: 75, fontFamily: 'Montserrat-SemiBoldItalic' },
+              headerTitleStyle: { marginLeft: 95, fontFamily: 'Montserrat-SemiBoldItalic' },
               headerStyle: {
                 backgroundColor: '#410CF5',
                 borderBottomWidth: 4,
-                borderBottomColor: '#F5B319',
+                borderBottomColor: '#F5D100',
               },
             }}
           />
@@ -114,7 +115,7 @@ const App = () => {
               headerStyle: {
                 backgroundColor: '#410CF5',
                 borderBottomWidth: 4,
-                borderBottomColor: '#F5B319',
+                borderBottomColor: '#F5D100',
               }
             }}
           />
@@ -128,7 +129,7 @@ const App = () => {
               headerStyle: {
                 backgroundColor: '#410CF5',
                 borderBottomWidth: 4,
-                borderBottomColor: '#F5B319',
+                borderBottomColor: '#F5D100',
 
               }
             }}
@@ -142,7 +143,20 @@ const App = () => {
               headerStyle: {
                 backgroundColor: '#410CF5',
                 borderBottomWidth: 4,
-                borderBottomColor: '#F5B319',
+                borderBottomColor: '#F5D100',
+              }
+            }}
+          />
+                    <Stack.Screen
+            name="Editar"
+            component={Editar}
+            options={{
+              headerTintColor: '#EDEDE9',
+              headerTitleStyle: { fontFamily: 'Montserrat-SemiBold' },
+              headerStyle: {
+                backgroundColor: '#410CF5',
+                borderBottomWidth: 4,
+                borderBottomColor: '#F5D100',
               }
             }}
           />
@@ -154,8 +168,8 @@ const App = () => {
 
 const css = StyleSheet.create({
   container: {
-    marginLeft: 110,
-    color: '#F5B319'
+    marginLeft: 130,
+    color: '#F5D100'
   }
 })
 
