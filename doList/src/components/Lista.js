@@ -186,24 +186,3 @@ const css = StyleSheet.create({
 });
 
 export default Lista;
-
-{
-  /* <View style={css.container}>
-        <Text>To Do List</Text>
-        <View>
-        <TouchableOpacity style={css.button} onPress={() => navigation.navigate('Cadastro')}>
-            <Text style={css.buttonText}>Cadastrar</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={css.button} onPress={getListas}>
-            <Text style={css.buttonText}>Atualizar</Text>
-          </TouchableOpacity>
-        </View>
-        <Text style={css.tituloLista}>Listagem</Text>
-        <FlatList
-        data={listas}
-        renderItem={TextListas}
-        keyExtractor={ lista => lista.nome }
-        ></FlatList>
-      </View>
-    </> */
-}
