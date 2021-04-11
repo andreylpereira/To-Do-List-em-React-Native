@@ -59,13 +59,14 @@ const Lista = ({navigation}) => {
 
   const getListas = async () => {
     try {
-      const response = await api.get('/');
+      const response = await api.get('/tarefas');
       console.log(JSON.stringify(response));
       setListas(response.data);
     } catch (error) {
       console.log('DEU RUIM' + error);
     }
   };
+  getListas();
 
   const TextListas = ({item}) => {
     return (
@@ -92,9 +93,9 @@ const Lista = ({navigation}) => {
         </View>
         <View style={css.card}>
           <Text style={css.header}>
-            {obj.item.data} - {obj.item.nome}
+            {item.data} - {item.nome}
           </Text>
-          <Text style={css.description}>{obj.item.descricao}</Text>
+          <Text style={css.description}>{item.descricao}</Text>
         </View>
       </View>
     );

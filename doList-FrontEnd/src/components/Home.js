@@ -54,6 +54,7 @@ const Home = ({ navigation }) => {
       console.log("DEU RUIM" + error);
     }
   }
+  getTarefas();
 
   const TextTarefa = ({ item }) => {
     return (
@@ -75,7 +76,7 @@ const Home = ({ navigation }) => {
         <Text style={css.subtittle}>Tarefas diários:</Text>
         <View style={css.scroll}>
           <View style={css.space}>
-            <ScrollView>
+            <ScrollView keyboardShouldPersistTaps='always' keyboardShouldPersistTaps='handled'>
               <View>
                 <View style={css.buttons}>
                   {/* <Icon
