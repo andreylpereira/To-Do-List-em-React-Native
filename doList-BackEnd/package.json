@@ -1,0 +1,32 @@
+{
+  "name": "dolist-backend",
+  "version": "1.0.0",
+  "description": "Aplicativo de gerenciamento de tarefas",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrenan-s/doList-backend.git"
+  },
+  "author": "Os Androids",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rrenan-s/doList-backend/issues"
+  },
+  "homepage": "https://github.com/rrenan-s/doList-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "mongo": "systemctl start mongod",
+    "mongostatus": "systemctl status mongod"
+  },
+  "devDependencies": {
+    "debug": "^4.3.1",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "sucrase": "^3.17.1"
+  }
+}
