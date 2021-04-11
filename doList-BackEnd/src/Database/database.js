@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 
+// adicionado um monitoramento de conexão com o banco de dados. No contexto do projeto talvez não seja necessário já que usa o banco de dados local
+// essa abordagem é recomendada para uso em nuvem.
+
 const db = mongoose.connection;
 const url = "localhost:27017/doList";
 
@@ -20,7 +23,7 @@ class Database {
     }
     handleConnect() {
         db.on('connected', () => {
-            console.log(`Mongoose default connection is open on ${url}`);
+            console.log(`Mongoose default connection is open on ${url}`); 
         });
 
         db.on('error', err => {

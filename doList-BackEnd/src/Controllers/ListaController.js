@@ -1,5 +1,7 @@
 import ListaSchema from '../Schema/ListaSchema';
 
+// renomeie os métodos da classe ListaControler para ficarem mais intuitivos. 
+
 class ListaController {
 
     async getTodo(req, res) {

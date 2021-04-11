@@ -1,5 +1,7 @@
 import express from 'express';
 
+//Arquivo criado para ser o controle de rotas da aplicação.
+
 import ListaController from '../src/Controllers/ListaController';
 
 const router = express.Router();
