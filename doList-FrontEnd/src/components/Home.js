@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   FlatList,
@@ -9,37 +9,64 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
+import api from '../services/axios';
 
-const Home = ({navigation}) => {
-  const tarefas = [
-    {
-      nome: 'Comprar pão na casa do joão',
-      descricao:
-        'compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa',
-      data: '23/10/1950',
-    },
-    {
-      nome:
-        'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-      descricao:
-        'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-      data: '24/10/1950',
-    },
-    {
-      nome:
-        'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-      descricao:
-        'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-      data: '24/10/1950',
-    },
-    {
-      nome:
-        'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-      descricao:
-        'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-      data: '24/10/1950',
-    },
-  ];
+const Home = ({ navigation }) => {
+  const tarefas_mock = [];
+  // const tarefas_mock = [
+  //   {
+  //     nome: 'Comprar pão na casa do joão',
+  //     descricao:
+  //       'compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa',
+  //     data: '23/10/1950',
+  //   },
+  //   {
+  //     nome:
+  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
+  //     descricao:
+  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
+  //     data: '24/10/1950',
+  //   },
+  //   {
+  //     nome:
+  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
+  //     descricao:
+  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
+  //     data: '24/10/1950',
+  //   },
+  //   {
+  //     nome:
+  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
+  //     descricao:
+  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
+  //     data: '24/10/1950',
+  //   },
+  // ]
+
+  const [tarefas, setTarefas] = useState(tarefas_mock);
+
+  const getTarefas = async () => {
+    try {
+      const response = await api.get('/tarefas');
+      console.log(JSON.stringify(response));
+      setTarefas(response.data)
+    } catch (error) {
+      console.log("DEU RUIM" + error);
+    }
+  }
+
+  const TextTarefa = ({ item }) => {
+    return (
+      <View>
+        <View style={css.card}>
+          <Text style={css.header}>
+            {item.data} - {item.nome}
+          </Text>
+          <Text style={css.description}>{item.descricao}</Text>
+        </View>
+      </View>
+    )
+  }
 
   return (
     <>
@@ -48,57 +75,59 @@ const Home = ({navigation}) => {
         <Text style={css.subtittle}>Tarefas diários:</Text>
         <View style={css.scroll}>
           <View style={css.space}>
-          <ScrollView>
-            <FlatList
-              data={tarefas}
-              renderItem={obj => {
-                return (
-                  <View>
-                    <View style={css.buttons}>
-                      {/* <Icon
-                        name="plus-square"
-                        color={'#410CF5'}
-                        size={24}
-                        style={css.colorAdd}>
-                        <TouchableOpacity
-                          onPress={() =>
-                            navigation.navigate('Cadastrar')
-                          }></TouchableOpacity>
-                      </Icon> */}
-                      <Icon
-                        name="edit-2"
-                        color={'#410CF5'}
-                        size={24}
-                        style={css.colorEdi}>
-                        <TouchableOpacity
-                          onPress={() =>
-                            navigation.navigate('Cadastrar')
-                          }></TouchableOpacity>
-                      </Icon>
-                      <Icon
-                        name="trash-2"
-                        color={'#410CF5'}
-                        size={24}
-                        style={css.colorDel}>
-                        <TouchableOpacity
-                          onPress={() =>
-                            navigation.navigate('Cadastrar')
-                          }></TouchableOpacity>
-                      </Icon>
-                    </View>
-                    <View style={css.card}>
-                      <Text style={css.header}>
-                        {obj.item.data} - {obj.item.nome}
-                      </Text>
-                      <Text style={css.description}>{obj.item.descricao}</Text>
-                    </View>
-                  </View>
-                );
-              }}></FlatList>
-          </ScrollView>
+            <ScrollView>
+              <View>
+                <View style={css.buttons}>
+                  {/* <Icon
+                      name="plus-square"
+                     color={'#410CF5'}
+                      size={24}
+                      style={css.colorAdd}>
+                      <TouchableOpacity
+                       onPress={() =>
+                           navigation.navigate('Cadastrar')
+                         }></TouchableOpacity>
+                     </Icon> */}
+                  <Icon
+                    name="edit-2"
+                    color={'#410CF5'}
+                    size={24}
+                    style={css.colorEdi}>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate('Cadastrar')
+                      }></TouchableOpacity>
+                  </Icon>
+                  <Icon
+                    name="trash-2"
+                    color={'#410CF5'}
+                    size={24}
+                    style={css.colorDel}>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate('Cadastrar')
+                      }></TouchableOpacity>
+                  </Icon>
+                </View>
+              </View>
+
+              <TouchableOpacity style={css.button} onPress={getTarefas}>
+                <Text style={css.buttonText}>Atualizar</Text>
+              </TouchableOpacity>
+
+
+
+              <FlatList
+                data={tarefas}
+                renderItem={TextTarefa}
+                keyExtractor={tarefa => tarefa.nome}
+
+              ></FlatList>
+            </ScrollView>
           </View>
         </View>
-        
+
+
         {/* <TouchableOpacity
           style={css.button}
           onPress={() => navigation.navigate('Lista')}>
@@ -113,7 +142,7 @@ const Home = ({navigation}) => {
       </View>
     </>
   );
-};
+}
 
 const css = StyleSheet.create({
   container: {
@@ -208,7 +237,7 @@ const css = StyleSheet.create({
   },
   colorDel: {
     color: '#FA2201',
-    
+
   },
   colorEdi: {
     color: '#4675C2',

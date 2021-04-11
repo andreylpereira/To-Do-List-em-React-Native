@@ -15,7 +15,7 @@ const Cadastro = ({ navigation }) => {
 
     if (nomeLista && descricaoLista && dataLista){
       try{
-        const response = await api.post('/', {"nome": nomeLista, "descricao": descricaoLista, "data": dataLista});
+        const response = await api.post('/novasTarefas', {"nome": nomeLista, "descricao": descricaoLista, "data": dataLista});
         console.log(JSON.stringify(response.data));
       } catch (error) {
         console.log("DEU RUIM" + error);
