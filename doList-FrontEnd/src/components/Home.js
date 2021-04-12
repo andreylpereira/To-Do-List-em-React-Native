@@ -153,7 +153,7 @@ const css = StyleSheet.create({
   },
   card: {
     marginBottom: 25,
-    marginLeft: '5%',
+    marginLeft: '7%',
     width: '88%',
     backgroundColor: '#F5D100',
     marginTop: 15,
@@ -207,7 +207,7 @@ const css = StyleSheet.create({
   buttons: {
     display: 'flex',
     flexDirection: 'row',
-    marginLeft: '81%',
+    marginLeft: '83%',
     marginBottom: -9.5,
     marginTop: 5,
   },
