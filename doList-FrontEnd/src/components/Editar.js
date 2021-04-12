@@ -46,14 +46,15 @@ const css = StyleSheet.create({
   },
   input: {
     width: 320,
-    height: 30,
+    height: 35,
     backgroundColor: '#FFFFFF',
-    borderColor: '#F5D100',
+    borderColor: '#DE890B',
     borderWidth: 1,
     borderRadius: 3.5,
     marginBottom: 15,
     textDecorationLine: 'none',
     fontFamily: 'Montserrat-Regular',
+    fontSize: 12,
     elevation: 9.5,
   },
   inputDescricao: {
@@ -65,6 +66,8 @@ const css = StyleSheet.create({
     borderRadius: 3.5,
     marginBottom: 15,
     textDecorationLine: 'none',
+    fontSize: 12,
+    fontFamily: 'Montserrat-Regular',
     elevation: 12.5,
   },
   button: {

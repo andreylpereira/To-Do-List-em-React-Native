@@ -72,7 +72,7 @@ const css = StyleSheet.create({
   },
   input: {
     width: 320,
-    height: 30,
+    height: 35,
     backgroundColor: '#FFFFFF',
     borderColor: '#DE890B',
     borderWidth: 1,
@@ -80,6 +80,7 @@ const css = StyleSheet.create({
     marginBottom: 15,
     textDecorationLine: 'none',
     fontFamily: 'Montserrat-Regular',
+    fontSize: 12,
     elevation: 9.5,
   },
   inputDescricao: {
@@ -91,7 +92,9 @@ const css = StyleSheet.create({
     borderRadius: 3.5,
     marginBottom: 15,
     textDecorationLine: 'none',
+    fontSize: 12,
     elevation: 12.5,
+    fontFamily: 'Montserrat-Regular',
   },
   button: {
     borderWidth: 2,
