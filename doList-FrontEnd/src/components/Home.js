@@ -59,6 +59,28 @@ const Home = ({ navigation }) => {
   const TextTarefa = ({ item }) => {
     return (
       <View>
+        <View style={css.buttons}>
+                  <Icon
+                    name="edit-2"
+                    color={'#410CF5'}
+                    size={24}
+                    style={css.colorEdi}>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate('Cadastrar')
+                      }></TouchableOpacity>
+                  </Icon>
+                  <Icon
+                    name="trash-2"
+                    color={'#410CF5'}
+                    size={24}
+                    style={css.colorDel}>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate('Editar')
+                      }></TouchableOpacity>
+                  </Icon>
+                </View>
         <View style={css.card}>
           <Text style={css.header}>
             {item.data} - {item.nome}
@@ -77,63 +99,19 @@ const Home = ({ navigation }) => {
         <View style={css.scroll}>
           <View style={css.space}>
             <ScrollView keyboardShouldPersistTaps='always' keyboardShouldPersistTaps='handled'>
-              <View>
-                <View style={css.buttons}>
-                  {/* <Icon
-                      name="plus-square"
-                     color={'#410CF5'}
-                      size={24}
-                      style={css.colorAdd}>
-                      <TouchableOpacity
-                       onPress={() =>
-                           navigation.navigate('Cadastrar')
-                         }></TouchableOpacity>
-                     </Icon> */}
-                  <Icon
-                    name="edit-2"
-                    color={'#410CF5'}
-                    size={24}
-                    style={css.colorEdi}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate('Cadastrar')
-                      }></TouchableOpacity>
-                  </Icon>
-                  <Icon
-                    name="trash-2"
-                    color={'#410CF5'}
-                    size={24}
-                    style={css.colorDel}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate('Cadastrar')
-                      }></TouchableOpacity>
-                  </Icon>
-                </View>
-              </View>
-
-              <TouchableOpacity style={css.button} onPress={getTarefas}>
-                <Text style={css.buttonText}>Atualizar</Text>
-              </TouchableOpacity>
-
-
-
               <FlatList
                 data={tarefas}
                 renderItem={TextTarefa}
                 keyExtractor={tarefa => tarefa.nome}
-
               ></FlatList>
             </ScrollView>
           </View>
         </View>
 
+        <TouchableOpacity style={css.buttonCadastro} onPress={getTarefas}>
+          <Text style={css.buttonText}>Atualizar</Text>
+        </TouchableOpacity>
 
-        {/* <TouchableOpacity
-          style={css.button}
-          onPress={() => navigation.navigate('Lista')}>
-          <Text style={css.buttonText}>Lista</Text>
-        </TouchableOpacity> */}
 
         <TouchableOpacity
           style={css.buttonCadastro}
@@ -147,7 +125,7 @@ const Home = ({ navigation }) => {
 
 const css = StyleSheet.create({
   container: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#F4F7FA',
     height: '100%',
     borderColor: '#410CF5',
     borderWidth: 2,
@@ -164,7 +142,7 @@ const css = StyleSheet.create({
     width: 250,
     height: 50,
     alignItems: 'center',
-    marginTop: 20,
+    marginBottom: 20,
     elevation: 7.5,
   },
   buttonText: {
@@ -176,7 +154,7 @@ const css = StyleSheet.create({
   card: {
     marginBottom: 25,
     marginLeft: '5%',
-    width: '90%',
+    width: '88%',
     backgroundColor: '#F5D100',
     marginTop: 15,
     borderWidth: 1,
@@ -202,14 +180,22 @@ const css = StyleSheet.create({
     fontSize: 14,
   },
   scroll: {
-    height: 450,
-    width: '100%',
+    height: 420,
+    width: '97%',
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderRadius: 9.5,
+    borderColor: '#E1E1E1',
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 20,
+    marginTop: 10,
   },
   tittle: {
     fontFamily: 'Montserrat-SemiBoldItalic',
     color: '#410CF5',
     fontSize: 30,
-    marginBottom: 45
+    marginBottom: 25
   },
   subtittle: {
     fontFamily: 'Montserrat-SemiBold',
@@ -221,8 +207,9 @@ const css = StyleSheet.create({
   buttons: {
     display: 'flex',
     flexDirection: 'row',
-    marginLeft: '84%',
+    marginLeft: '81%',
     marginBottom: -9.5,
+    marginTop: 5,
   },
   button: {
     padding: 5,
@@ -242,7 +229,6 @@ const css = StyleSheet.create({
   },
   colorEdi: {
     color: '#4675C2',
-    // marginTop: -1,
     marginLeft: 1
   },
 });

@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 
-
-
 const Index = ({navigation}) => {
 
       return(
         <>
           <View style={css.container}>
-              {/* <Text>Seja Bem-vindo!</Text> */}
 
               <TouchableOpacity style={css.button} onPress={() => navigation.navigate('Cadastro')}>
               <Text style={css.buttonText}>Adicionar</Text>
@@ -21,7 +18,6 @@ const Index = ({navigation}) => {
               <TouchableOpacity style={css.button} onPress={() => navigation.navigate('Cadastro')}>
               <Text style={css.buttonText}>Remover</Text>
               </TouchableOpacity>
-
               
           </View>
         </>
@@ -31,7 +27,7 @@ const Index = ({navigation}) => {
 const css = StyleSheet.create({
 
   container: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#F4F7FA',
     flex: 1,
     height: '100%',
     borderColor: '#410CF5',

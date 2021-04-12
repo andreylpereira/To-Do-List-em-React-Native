@@ -94,7 +94,7 @@ const App = () => {
             options={{
               headerLeft: () => (
                 <View>
-                  <Icon name={'navigation'} size={30} color={'#FFFFFF'} style={css.container} />
+                  <Icon name={'clipboard'} size={30} color={'#FFFFFF'} style={css.container} />
                 </View>
               ),
               headerTintColor: '#EDEDE9',
