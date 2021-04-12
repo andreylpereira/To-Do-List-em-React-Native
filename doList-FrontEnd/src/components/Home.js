@@ -12,36 +12,36 @@ import Icon from 'react-native-vector-icons/Feather';
 import api from '../services/axios';
 
 const Home = ({ navigation }) => {
-  const tarefas_mock = [];
-  // const tarefas_mock = [
-  //   {
-  //     nome: 'Comprar pão na casa do joão',
-  //     descricao:
-  //       'compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa',
-  //     data: '23/10/1950',
-  //   },
-  //   {
-  //     nome:
-  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-  //     descricao:
-  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '24/10/1950',
-  //   },
-  //   {
-  //     nome:
-  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-  //     descricao:
-  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '24/10/1950',
-  //   },
-  //   {
-  //     nome:
-  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-  //     descricao:
-  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '24/10/1950',
-  //   },
-  // ]
+  // const tarefas_mock = [];
+  const tarefas_mock = [
+    {
+      nome: 'Comprar pão na casa do joão',
+      descricao:
+        'compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa',
+      data: '23/10/1950',
+    },
+    {
+      nome:
+        'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
+      descricao:
+        'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
+      data: '24/10/1950',
+    },
+    {
+      nome:
+        'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
+      descricao:
+        'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
+      data: '24/10/1950',
+    },
+    {
+      nome:
+        'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
+      descricao:
+        'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
+      data: '24/10/1950',
+    },
+  ]
 
   const [tarefas, setTarefas] = useState(tarefas_mock);
 
@@ -100,7 +100,7 @@ const Home = ({ navigation }) => {
           <View style={css.space}>
             <ScrollView keyboardShouldPersistTaps='always' keyboardShouldPersistTaps='handled'>
               <FlatList
-                data={tarefas}
+                data={tarefas_mock}
                 renderItem={TextTarefa}
                 keyExtractor={tarefa => tarefa.nome}
               ></FlatList>
@@ -153,7 +153,7 @@ const css = StyleSheet.create({
   },
   card: {
     marginBottom: 25,
-    marginLeft: '7%',
+    marginLeft: '6%',
     width: '88%',
     backgroundColor: '#F5D100',
     marginTop: 15,
