@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import api from '../services/axios';
 
 const Lista = ({navigation}) => {
-  // const tarefas = [
+  // const tarefas_Mock = [
   //   {
   //     nome: 'Comprar pão na casa do joão',
   //     descricao:
@@ -128,7 +128,7 @@ const css = StyleSheet.create({
   card: {
     marginBottom: 25,
     marginLeft: '5%',
-    width: '90%',
+    width: '88%',
     backgroundColor: '#F5D100',
     marginTop: 15,
     borderWidth: 1,
@@ -157,11 +157,12 @@ const css = StyleSheet.create({
     height: '95%',
     width: '100%',
     paddingTop: 35,
+    
   },
   buttons: {
     display: 'flex',
     flexDirection: 'row',
-    marginLeft: '84%',
+    marginLeft: '82%',
     marginBottom: -9.5,
   },
   button: {

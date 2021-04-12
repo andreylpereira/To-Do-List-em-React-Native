@@ -13,11 +13,11 @@ const Editar = ({ navigation }) => {
 
         <Text style={css.label}>Nome:</Text>
         <TextInput style={css.input}></TextInput>
-
-        <Text style={css.label}>Descrição:</Text>
-        <TextInput style={css.inputDescricao} multiline={true}></TextInput>
         <Text style={css.label}>Data:</Text>
         <TextInput style={css.input}></TextInput>
+        <Text style={css.label}>Descrição:</Text>
+        <TextInput style={css.inputDescricao} multiline={true}></TextInput>
+
 
         <TouchableOpacity style={css.button}>
           <Text style={css.buttonText}>Editar</Text>
@@ -32,7 +32,7 @@ const Editar = ({ navigation }) => {
 const css = StyleSheet.create({
 
   container: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#F4F7FA',
     flex: 1,
     height: '100%',
     borderColor: '#410CF5',

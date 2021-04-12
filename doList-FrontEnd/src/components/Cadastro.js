@@ -35,14 +35,14 @@ const Cadastro = ({ navigation }) => {
           setNomeLista(item)
         }}></TextInput>
 
-        <Text style={css.label}>Descrição:</Text>
-        <TextInput style={css.inputDescricao} multiline={true} value={descricaoLista} onChangeText={item => {
-          setDescricaoLista(item)
-        }}></TextInput>
-
         <Text style={css.label}>Data:</Text>
         <TextInput style={css.input} value={dataLista} onChangeText={item => {
           setDataLista(item)
+        }}></TextInput>
+
+        <Text style={css.label}>Descrição:</Text>
+        <TextInput style={css.inputDescricao} multiline={true} value={descricaoLista} onChangeText={item => {
+          setDescricaoLista(item)
         }}></TextInput>
 
         <TouchableOpacity style={css.button} onPress={createLista}>
@@ -58,7 +58,7 @@ const Cadastro = ({ navigation }) => {
 const css = StyleSheet.create({
 
   container: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#F4F7FA',
     flex: 1,
     height: '100%',
     borderColor: '#410CF5',
