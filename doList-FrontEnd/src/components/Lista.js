@@ -66,7 +66,7 @@ const Lista = ({navigation}) => {
       console.log('DEU RUIM' + error);
     }
   };
-  getListas();
+  // getListas();
 
   const TextListas = ({item}) => {
     return (
@@ -104,12 +104,12 @@ const Lista = ({navigation}) => {
     <>
       <View style={css.container}>
         <View style={css.scroll}>
-          <ScrollView>
+          {/* <ScrollView> */}
             <FlatList
               data={listas}
               renderItem={TextListas}
               keyExtractor={lista => lista.nome}></FlatList>
-          </ScrollView>
+          {/* </ScrollView> */}
         </View>
       </View>
     </>

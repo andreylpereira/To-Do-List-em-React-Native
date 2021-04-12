@@ -54,7 +54,7 @@ const Home = ({ navigation }) => {
       console.log("DEU RUIM" + error);
     }
   }
-  getTarefas();
+  // getTarefas();
 
   const TextTarefa = ({ item }) => {
     return (
