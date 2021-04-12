@@ -12,36 +12,36 @@ import Icon from 'react-native-vector-icons/Feather';
 import api from '../services/axios';
 
 const Home = ({ navigation }) => {
-  // const tarefas_mock = [];
-  const tarefas_mock = [
-    {
-      nome: 'Comprar pão na casa do joão',
-      descricao:
-        'compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa',
-      data: '23/10/1950',
-    },
-    {
-      nome:
-        'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-      descricao:
-        'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-      data: '24/10/1950',
-    },
-    {
-      nome:
-        'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-      descricao:
-        'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-      data: '24/10/1950',
-    },
-    {
-      nome:
-        'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-      descricao:
-        'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-      data: '24/10/1950',
-    },
-  ]
+  const tarefas_mock = [];
+  // const tarefas_mock = [
+  //   {
+  //     nome: 'Comprar pão na casa do joão',
+  //     descricao:
+  //       'compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa',
+  //     data: '23/10/1950',
+  //   },
+  //   {
+  //     nome:
+  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
+  //     descricao:
+  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
+  //     data: '24/10/1950',
+  //   },
+  //   {
+  //     nome:
+  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
+  //     descricao:
+  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
+  //     data: '24/10/1950',
+  //   },
+  //   {
+  //     nome:
+  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
+  //     descricao:
+  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
+  //     data: '24/10/1950',
+  //   },
+  // ]
 
   const [tarefas, setTarefas] = useState(tarefas_mock);
 
@@ -98,13 +98,13 @@ const Home = ({ navigation }) => {
         <Text style={css.subtittle}>Tarefas diários:</Text>
         <View style={css.scroll}>
           <View style={css.space}>
-            <ScrollView keyboardShouldPersistTaps='always' keyboardShouldPersistTaps='handled'>
+            {/* <ScrollView keyboardShouldPersistTaps='always' keyboardShouldPersistTaps='handled'> */}
               <FlatList
-                data={tarefas_mock}
+                data={tarefas}
                 renderItem={TextTarefa}
                 keyExtractor={tarefa => tarefa.nome}
               ></FlatList>
-            </ScrollView>
+            {/* </ScrollView> */}
           </View>
         </View>
 
