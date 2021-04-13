@@ -4,9 +4,7 @@ import {
   FlatList,
   Text,
   StyleSheet,
-  ScrollView,
   TouchableOpacity,
-  Button,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -55,7 +53,7 @@ const Home = ({navigation}) => {
       console.log('DEU RUIM' + error);
     }
   };
-  // getTarefas();
+ 
 
   const TextTarefa = ({item}) => {
     return (
@@ -63,7 +61,7 @@ const Home = ({navigation}) => {
         <View style={css.buttons}>
 
           <Icon
-            onPress={() => navigation.navigate('Editar')}
+            onPress={() => navigation.navigate('Editar'), this.getTarefas}
             name="edit-2"
             color={'#410CF5'}
             size={24}
@@ -96,12 +94,10 @@ const Home = ({navigation}) => {
         <Text style={css.subtittle}>Tarefas diários:</Text>
         <View style={css.scroll}>
           <View style={css.space}>
-            {/* <ScrollView keyboardShouldPersistTaps='always' keyboardShouldPersistTaps='handled'> */}
             <FlatList
               data={tarefas}
               renderItem={TextTarefa}
-              keyExtractor={tarefa => tarefa.nome}></FlatList>
-            {/* </ScrollView> */}
+              keyExtractor={tarefa => tarefa.nome}/>
           </View>
         </View>
 

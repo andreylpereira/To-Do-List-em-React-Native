@@ -4,7 +4,6 @@ import {
   FlatList,
   Text,
   StyleSheet,
-  ScrollView,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
@@ -62,11 +61,11 @@ const Lista = ({navigation}) => {
       const response = await api.get('/tarefas');
       console.log(JSON.stringify(response));
       setListas(response.data);
+
     } catch (error) {
       console.log('DEU RUIM' + error);
     }
-  };
-  // getTarefas();
+  }
 
   const TextListas = ({item}) => {
     return (
@@ -103,18 +102,15 @@ const Lista = ({navigation}) => {
     <>
       <View style={css.container}>
         <View style={css.scroll}>
-          {/* <ScrollView> */}
             <FlatList
               data={listas}
               renderItem={TextListas}
-              keyExtractor={lista => lista.nome}></FlatList>
-          {/* </ScrollView> */}
+              keyExtractor={lista => lista.nome}
+              />
         </View>
-
         <TouchableOpacity style={css.buttonCadastro} onPress={getTarefas}>
           <Text style={css.buttonText}>Atualizar</Text>
         </TouchableOpacity>
-
       </View>
     </>
   );
