@@ -7,7 +7,7 @@ const Sobre = ({navigation}) => {
       return(
         <>
           <View style={css.container}>
-              <Text>Teste3</Text>
+              <Text>TESTE DOS ICONES</Text>
           </View>
         </>
       );

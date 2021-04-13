@@ -57,7 +57,7 @@ const Lista = ({navigation}) => {
 
   const [listas, setListas] = useState();
 
-  const getListas = async () => {
+  const getTarefas = async () => {
     try {
       const response = await api.get('/tarefas');
       console.log(JSON.stringify(response));
@@ -66,30 +66,29 @@ const Lista = ({navigation}) => {
       console.log('DEU RUIM' + error);
     }
   };
-  // getListas();
+  // getTarefas();
 
   const TextListas = ({item}) => {
     return (
       <View>
         <View style={css.buttons}>
-          {/* <Icon
-                        name="plus-square"
-                        color={'#410CF5'}
-                        size={24}
-                        style={css.colorAdd}>
-                        <TouchableOpacity
-                          onPress={() =>
-                            navigation.navigate('Cadastrar')
-                          }></TouchableOpacity>
-                      </Icon> */}
-          <Icon name="edit" color={'#410CF5'} size={24} style={css.colorEdi}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Editar')}></TouchableOpacity>
-          </Icon>
-          <Icon name="trash-2" color={'#410CF5'} size={24} style={css.colorDel}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Editar')}></TouchableOpacity>
-          </Icon>
+
+        <Icon
+            onPress={() => navigation.navigate('Editar')}
+            name="edit-2"
+            color={'#410CF5'}
+            size={24}
+            style={css.colorEdi}
+          />
+
+          <Icon
+            onPress={() => navigation.navigate('Sobre')}
+            name="trash-2"
+            color={'#410CF5'}
+            size={24}
+            style={css.colorDel}
+          />
+
         </View>
         <View style={css.card}>
           <Text style={css.header}>
@@ -111,6 +110,11 @@ const Lista = ({navigation}) => {
               keyExtractor={lista => lista.nome}></FlatList>
           {/* </ScrollView> */}
         </View>
+
+        <TouchableOpacity style={css.buttonCadastro} onPress={getTarefas}>
+          <Text style={css.buttonText}>Atualizar</Text>
+        </TouchableOpacity>
+
       </View>
     </>
   );
@@ -154,7 +158,7 @@ const css = StyleSheet.create({
     fontSize: 14,
   },
   scroll: {
-    height: '95%',
+    height: '85%',
     width: '100%',
     paddingTop: 35,
     
@@ -182,8 +186,25 @@ const css = StyleSheet.create({
   },
   colorEdi: {
     color: '#4675C2',
-    // marginTop: -1,
     marginLeft: 1,
+  },
+  buttonCadastro: {
+    borderWidth: 2,
+    borderColor: '#DE890B',
+    borderRadius: 20,
+    backgroundColor: '#F5D100',
+    width: 250,
+    height: 50,
+    alignItems: 'center',
+    marginTop: 20,
+    elevation: 7.5,
+    alignSelf: 'center'
+  },
+  buttonText: {
+    color: '#410CF5',
+    fontSize: 18,
+    marginTop: 10,
+    fontFamily: 'Montserrat-Medium',
   },
 });
 
