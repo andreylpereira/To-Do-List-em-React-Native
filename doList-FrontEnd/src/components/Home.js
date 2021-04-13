@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   FlatList,
   Text,
   StyleSheet,
-  ScrollView,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import api from '../services/axios';
 
-const Home = ({ navigation }) => {
+const Home = ({navigation}) => {
   const tarefas_mock = [];
   // const tarefas_mock = [
   //   {
@@ -49,38 +48,35 @@ const Home = ({ navigation }) => {
     try {
       const response = await api.get('/tarefas');
       console.log(JSON.stringify(response));
-      setTarefas(response.data)
+      setTarefas(response.data);
     } catch (error) {
-      console.log("DEU RUIM" + error);
+      console.log('DEU RUIM' + error);
     }
-  }
-  getTarefas();
+  };
+ 
 
-  const TextTarefa = ({ item }) => {
+  const TextTarefa = ({item}) => {
     return (
       <View>
         <View style={css.buttons}>
-                  <Icon
-                    name="edit-2"
-                    color={'#410CF5'}
-                    size={24}
-                    style={css.colorEdi}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate('Cadastrar')
-                      }></TouchableOpacity>
-                  </Icon>
-                  <Icon
-                    name="trash-2"
-                    color={'#410CF5'}
-                    size={24}
-                    style={css.colorDel}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate('Editar')
-                      }></TouchableOpacity>
-                  </Icon>
-                </View>
+
+          <Icon
+            onPress={() => navigation.navigate('Editar'), this.getTarefas}
+            name="edit-2"
+            color={'#410CF5'}
+            size={24}
+            style={css.colorEdi}
+          />
+
+          <Icon
+            onPress={() => navigation.navigate('Sobre')}
+            name="trash-2"
+            color={'#410CF5'}
+            size={24}
+            style={css.colorDel}
+          />
+
+        </View>
         <View style={css.card}>
           <Text style={css.header}>
             {item.data} - {item.nome}
@@ -88,8 +84,8 @@ const Home = ({ navigation }) => {
           <Text style={css.description}>{item.descricao}</Text>
         </View>
       </View>
-    )
-  }
+    );
+  };
 
   return (
     <>
@@ -98,20 +94,16 @@ const Home = ({ navigation }) => {
         <Text style={css.subtittle}>Tarefas diários:</Text>
         <View style={css.scroll}>
           <View style={css.space}>
-            <ScrollView keyboardShouldPersistTaps='always' keyboardShouldPersistTaps='handled'>
-              <FlatList
-                data={tarefas}
-                renderItem={TextTarefa}
-                keyExtractor={tarefa => tarefa.nome}
-              ></FlatList>
-            </ScrollView>
+            <FlatList
+              data={tarefas}
+              renderItem={TextTarefa}
+              keyExtractor={tarefa => tarefa.nome}/>
           </View>
         </View>
 
         <TouchableOpacity style={css.buttonCadastro} onPress={getTarefas}>
           <Text style={css.buttonText}>Atualizar</Text>
         </TouchableOpacity>
-
 
         <TouchableOpacity
           style={css.buttonCadastro}
@@ -121,7 +113,7 @@ const Home = ({ navigation }) => {
       </View>
     </>
   );
-}
+};
 
 const css = StyleSheet.create({
   container: {
@@ -153,7 +145,7 @@ const css = StyleSheet.create({
   },
   card: {
     marginBottom: 25,
-    marginLeft: '5%',
+    marginLeft: '6%',
     width: '88%',
     backgroundColor: '#F5D100',
     marginTop: 15,
@@ -195,19 +187,19 @@ const css = StyleSheet.create({
     fontFamily: 'Montserrat-SemiBoldItalic',
     color: '#410CF5',
     fontSize: 30,
-    marginBottom: 25
+    marginBottom: 25,
   },
   subtittle: {
     fontFamily: 'Montserrat-SemiBold',
     color: '#410CF5',
     fontSize: 20,
     marginBottom: 5,
-    marginLeft: -240
+    marginLeft: -240,
   },
   buttons: {
     display: 'flex',
     flexDirection: 'row',
-    marginLeft: '81%',
+    marginLeft: '83%',
     marginBottom: -9.5,
     marginTop: 5,
   },
@@ -225,11 +217,10 @@ const css = StyleSheet.create({
   },
   colorDel: {
     color: '#FA2201',
-
   },
   colorEdi: {
     color: '#4675C2',
-    marginLeft: 1
+    marginLeft: 1,
   },
 });
 
