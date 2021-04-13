@@ -71,7 +71,7 @@ const Lista = ({navigation}) => {
     return (
       <View>
         <View style={css.buttons}>
-
+        <View style={css.colorEdiBorder}>
         <Icon
             onPress={() => navigation.navigate('Editar')}
             name="edit-2"
@@ -79,7 +79,8 @@ const Lista = ({navigation}) => {
             size={24}
             style={css.colorEdi}
           />
-
+        </View>
+        <View style={css.colorDelBorder}>
           <Icon
             onPress={() => navigation.navigate('Sobre')}
             name="trash-2"
@@ -87,7 +88,7 @@ const Lista = ({navigation}) => {
             size={24}
             style={css.colorDel}
           />
-
+        </View>
         </View>
         <View style={css.card}>
           <Text style={css.header}>
@@ -162,7 +163,7 @@ const css = StyleSheet.create({
   buttons: {
     display: 'flex',
     flexDirection: 'row',
-    marginLeft: '82%',
+    marginLeft: '73%',
     marginBottom: -9.5,
   },
   button: {
@@ -174,15 +175,43 @@ const css = StyleSheet.create({
     borderTopWidth: 2,
     borderBottomWidth: 2,
   },
-  colorAdd: {
-    color: '#19B354',
-  },
+  // colorAdd: {
+  //   color: '#19B354',
+  // },
   colorDel: {
-    color: '#FA2201',
+    backgroundColor: '#FA2201',
+    color: '#FFFFFF',
+    marginTop: 2.5,
   },
   colorEdi: {
-    color: '#4675C2',
+    backgroundColor: '#4675C2',
     marginLeft: 1,
+    color: '#FFFFFF',
+    marginTop: 2.5,
+  },
+  colorDelBorder: {
+    alignItems:'center',
+    color: '#FA2201',
+    margin: 5,
+    width: 35,
+    height: 35,
+    borderRadius: 7.5,
+    borderWidth: 1,
+    borderColor: '#C7C3C4',
+    backgroundColor: '#FA2201',
+    elevation: 7.5,
+  },
+  colorEdiBorder: {
+    alignItems:'center',
+    color: '#4675C2',
+    margin: 5,
+    width: 35,
+    height: 35,
+    borderRadius: 7.5,
+    borderWidth: 1,
+    borderColor: '#C7C3C4',
+    backgroundColor: '#4675C2',
+    elevation: 7.5,
   },
   buttonCadastro: {
     borderWidth: 2,
