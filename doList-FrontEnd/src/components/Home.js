@@ -1,11 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  FlatList,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import {View, FlatList, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import api from '../services/axios';
@@ -53,29 +47,29 @@ const Home = ({navigation}) => {
       console.log('DEU RUIM' + error);
     }
   };
- 
 
   const TextTarefa = ({item}) => {
     return (
       <View>
         <View style={css.buttons}>
-
-          <Icon
-            onPress={() => navigation.navigate('Editar'), this.getTarefas}
-            name="edit-2"
-            color={'#410CF5'}
-            size={24}
-            style={css.colorEdi}
-          />
-
-          <Icon
-            onPress={() => navigation.navigate('Sobre')}
-            name="trash-2"
-            color={'#410CF5'}
-            size={24}
-            style={css.colorDel}
-          />
-
+          <View style={css.colorEdiBorder}>
+            <Icon
+              onPress={(() => navigation.navigate('Editar'))}
+              name="edit-2"
+              color={'#410CF5'}
+              size={24}
+              style={css.colorEdi}
+            />
+          </View>
+          <View style={css.colorDelBorder}>
+            <Icon
+              onPress={() => navigation.navigate('Sobre')}
+              name="trash-2"
+              color={'#410CF5'}
+              size={24}
+              style={css.colorDel}
+            />
+          </View>
         </View>
         <View style={css.card}>
           <Text style={css.header}>
@@ -91,24 +85,25 @@ const Home = ({navigation}) => {
     <>
       <View style={css.container}>
         <Text style={css.tittle}>Seja bem-vindo!</Text>
-        <Text style={css.subtittle}>Tarefas diários:</Text>
+        <Text style={css.subtittle}>Tarefas diárias:</Text>
         <View style={css.scroll}>
           <View style={css.space}>
             <FlatList
               data={tarefas}
               renderItem={TextTarefa}
-              keyExtractor={tarefa => tarefa.nome}/>
+              keyExtractor={tarefa => tarefa.nome}
+            />
           </View>
         </View>
 
-        <TouchableOpacity style={css.buttonCadastro} onPress={getTarefas}>
-          <Text style={css.buttonText}>Atualizar</Text>
+        <TouchableOpacity style={css.buttonAtualizar} onPress={getTarefas}>
+          <Text style={css.buttonTextAtualizar}>Atualizar</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={css.buttonCadastro}
+          style={css.buttonCadastrar}
           onPress={() => navigation.navigate('Cadastro')}>
-          <Text style={css.buttonText}>Cadastro</Text>
+          <Text style={css.buttonTextCadastrar}>Cadastro</Text>
         </TouchableOpacity>
       </View>
     </>
@@ -126,7 +121,7 @@ const css = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  buttonCadastro: {
+  buttonAtualizar: {
     borderWidth: 2,
     borderColor: '#DE890B',
     borderRadius: 20,
@@ -137,12 +132,32 @@ const css = StyleSheet.create({
     marginBottom: 20,
     elevation: 7.5,
   },
-  buttonText: {
+  buttonTextAtualizar: {
     color: '#410CF5',
     fontSize: 18,
     marginTop: 10,
     fontFamily: 'Montserrat-Medium',
   },
+  buttonCadastrar: {
+    borderWidth: 2,
+    borderColor: '#2600A8',
+    borderRadius: 20,
+    backgroundColor: '#410CF5',
+    width: 250,
+    height: 50,
+    alignItems: 'center',
+    marginBottom: 20,
+    elevation: 7.5,
+  },
+  buttonTextCadastrar: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    marginTop: 10,
+    fontFamily: 'Montserrat-Medium',
+  },
+
+
+  
   card: {
     marginBottom: 25,
     marginLeft: '6%',
@@ -199,7 +214,7 @@ const css = StyleSheet.create({
   buttons: {
     display: 'flex',
     flexDirection: 'row',
-    marginLeft: '83%',
+    marginLeft: '73%',
     marginBottom: -9.5,
     marginTop: 5,
   },
@@ -212,16 +227,46 @@ const css = StyleSheet.create({
     borderTopWidth: 2,
     borderBottomWidth: 2,
   },
-  colorAdd: {
-    color: '#19B354',
-  },
+  // colorAdd: {
+  //   color: '#19B354',
+  // },
   colorDel: {
-    color: '#FA2201',
+    backgroundColor: '#FA2201',
+    color: '#FFFFFF',
+    marginTop: 2.5,
   },
   colorEdi: {
-    color: '#4675C2',
+    backgroundColor: '#4675C2',
     marginLeft: 1,
+    color: '#FFFFFF',
+    marginTop: 2.5,
   },
+  colorDelBorder: {
+    alignItems:'center',
+    color: '#FA2201',
+    margin: 5,
+    width: 35,
+    height: 35,
+    borderRadius: 7.5,
+    borderWidth: 1,
+    borderColor: '#C7C3C4',
+    backgroundColor: '#FA2201',
+    elevation: 7.5,
+  },
+  colorEdiBorder: {
+    alignItems:'center',
+    color: '#4675C2',
+    margin: 5,
+    width: 35,
+    height: 35,
+    borderRadius: 7.5,
+    borderWidth: 1,
+    borderColor: '#C7C3C4',
+    backgroundColor: '#4675C2',
+    elevation: 7.5,
+  },
+
+  
 });
 
 export default Home;

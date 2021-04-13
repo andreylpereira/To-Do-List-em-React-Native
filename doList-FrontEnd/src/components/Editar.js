@@ -55,6 +55,7 @@ const css = StyleSheet.create({
     textDecorationLine: 'none',
     fontFamily: 'Montserrat-Regular',
     fontSize: 12,
+    textDecorationLine:'none',
     elevation: 9.5,
   },
   inputDescricao: {
@@ -67,6 +68,7 @@ const css = StyleSheet.create({
     marginBottom: 15,
     textDecorationLine: 'none',
     fontSize: 12,
+    textDecorationLine:'none',
     fontFamily: 'Montserrat-Regular',
     elevation: 12.5,
   },
