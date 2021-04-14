@@ -35,7 +35,6 @@ const Home = ({navigation}) => {
   //     data: '24/10/1950',
   //   },
   // ]
-
   const [tarefas, setTarefas] = useState(tarefas_mock);
 
   const getTarefas = async () => {
@@ -155,9 +154,6 @@ const css = StyleSheet.create({
     marginTop: 10,
     fontFamily: 'Montserrat-Medium',
   },
-
-
-  
   card: {
     marginBottom: 25,
     marginLeft: '6%',

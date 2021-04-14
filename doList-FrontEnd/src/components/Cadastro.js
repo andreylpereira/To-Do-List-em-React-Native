@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+
+
 // Importei tambem o TouchableOpacity
 // Importei o axios
 import api from '../services/axios';
@@ -24,7 +26,7 @@ const Cadastro = ({ navigation }) => {
       console.log("Vazio")
     }
   }
-  
+
   // adicionei os valores da lista dentro do valor do campo e adicionei o onChange que set a variavel
   return (
     <>
