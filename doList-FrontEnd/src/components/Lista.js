@@ -1,3 +1,5 @@
+// Arquivo que faz as listagens das tarefas cadastradas
+
 import React, {useState} from 'react';
 import {
   View,
@@ -6,68 +8,25 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+
 import Icon from 'react-native-vector-icons/Feather';
 import api from '../services/axios';
 
 const Lista = ({navigation}) => {
-  // const tarefas_Mock = [
-  //   {
-  //     nome: 'Comprar pão na casa do joão',
-  //     descricao:
-  //       'compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa',
-  //     data: '23/10/1950',
-  //   },
-  //   {
-  //     nome:
-  //       'Aula Angular na jamaica com o bob marley doidao de erv',
-  //     descricao:
-  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '24/10/1950',
-  //   },
-  //   {
-  //     nome: 'Aula React-native',
-  //     descricao:
-  //       'Assistir aula de React-native compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '25/10/1950',
-  //   },
-  //   {
-  //     nome: 'Aula Banco de dados',
-  //     descricao: 'Assistir aula de Banco de dados',
-  //     data: '26/10/1950',
-  //   },
-  //   {
-  //     nome: 'Aula javascript',
-  //     descricao:
-  //       'Assistir aula de javascript compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '27/10/1950',
-  //   },
-  //   {
-  //     nome: 'Aula javascript',
-  //     descricao:
-  //       'Assistir aula de javascript compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '27/10/1950',
-  //   },
-  //   {
-  //     nome: 'Aula Banco de dados',
-  //     descricao: 'Assistir aula de Banco de dados',
-  //     data: '26/10/1950',
-  //   },
-  // ];
-
-  const [listas, setListas] = useState();
+  const [tarefas, setTarefas] = useState();
 
   const getTarefas = async () => {
     try {
       const response = await api.get('/tarefas');
       console.log(JSON.stringify(response));
-      setListas(response.data);
+      setTarefas(response.data);
 
     } catch (error) {
       console.log('DEU RUIM' + error);
     }
   }
 
-  const TextListas = ({item}) => {
+  const TextTarefas = ({item}) => {
     return (
       <View>
         <View style={css.buttons}>
@@ -104,8 +63,8 @@ const Lista = ({navigation}) => {
       <View style={css.container}>
         <View style={css.scroll}>
             <FlatList
-              data={listas}
-              renderItem={TextListas}
+              data={tarefas}
+              renderItem={TextTarefas}
               keyExtractor={lista => lista.nome}
               />
         </View>

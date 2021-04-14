@@ -6,35 +6,6 @@ import api from '../services/axios';
 
 const Home = ({navigation}) => {
   const tarefas_mock = [];
-  // const tarefas_mock = [
-  //   {
-  //     nome: 'Comprar pão na casa do joão',
-  //     descricao:
-  //       'compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa',
-  //     data: '23/10/1950',
-  //   },
-  //   {
-  //     nome:
-  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-  //     descricao:
-  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '24/10/1950',
-  //   },
-  //   {
-  //     nome:
-  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-  //     descricao:
-  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '24/10/1950',
-  //   },
-  //   {
-  //     nome:
-  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-  //     descricao:
-  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '24/10/1950',
-  //   },
-  // ]
 
   const [tarefas, setTarefas] = useState(tarefas_mock);
 

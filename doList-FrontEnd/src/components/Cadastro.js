@@ -1,21 +1,21 @@
+// Arquivo que cria uma nova tarefa
+
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-// Importei tambem o TouchableOpacity
-// Importei o axios
+
 import api from '../services/axios';
 
 const Cadastro = ({ navigation }) => {
-  // Criei uma constante com os valores da nossa lista
-  const [nomeLista, setNomeLista] = useState("");
-  const [descricaoLista, setDescricaoLista] = useState("");
-  const [dataLista, setDataLista] = useState("");
 
-  // Criei uma constante que valida a nossa lista e adicionei o método post
-  const createLista = async () => {
+  const [nomeTarefa, setNomeTarefa] = useState("");
+  const [descricaoTarefa, setDescricaoTarefa] = useState("");
+  const [dataTarefa, setDataTarefa] = useState("");
 
-    if (nomeLista && descricaoLista && dataLista){
+  const createTarefa = async () => {
+
+    if (nomeTarefa && descricaoTarefa && dataTarefa){
       try{
-        const response = await api.post('/novasTarefas', {"nome": nomeLista, "descricao": descricaoLista, "data": dataLista});
+        const response = await api.post('/novasTarefas', {"nome": nomeTarefa, "descricao": descricaoTarefa, "data": dataTarefa});
         console.log(JSON.stringify(response.data));
       } catch (error) {
         console.log("DEU RUIM" + error);
@@ -25,27 +25,26 @@ const Cadastro = ({ navigation }) => {
     }
   }
   
-  // adicionei os valores da lista dentro do valor do campo e adicionei o onChange que set a variavel
   return (
     <>
       <View style={css.container}>
 
         <Text style={css.label}>Nome:</Text>
-        <TextInput style={css.input}  value={nomeLista} onChangeText={item => {
-          setNomeLista(item)
+        <TextInput style={css.input}  value={nomeTarefa} onChangeText={item => {
+          setNomeTarefa(item)
         }}></TextInput>
 
         <Text style={css.label}>Data:</Text>
-        <TextInput style={css.input} value={dataLista} onChangeText={item => {
-          setDataLista(item)
+        <TextInput style={css.input} value={dataTarefa} onChangeText={item => {
+          setDataTarefa(item)
         }}></TextInput>
 
         <Text style={css.label}>Descrição:</Text>
-        <TextInput style={css.inputDescricao} multiline={true} value={descricaoLista} onChangeText={item => {
-          setDescricaoLista(item)
+        <TextInput style={css.inputDescricao} multiline={true} value={descricaoTarefa} onChangeText={item => {
+          setDescricaoTarefa(item)
         }}></TextInput>
 
-        <TouchableOpacity style={css.button} onPress={createLista}>
+        <TouchableOpacity style={css.button} onPress={createTarefa}>
           <Text style={css.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
 
