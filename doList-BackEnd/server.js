@@ -7,7 +7,7 @@ import router from './Routes/routes' // importar as rotas de outro arquivo.
 import './src/Database/database';
 
 const app = express();
-const port = process.env.PORT || 3030; // caso esteja configurado variaveis de ambiente elas serão usadas se não houver porta 3000.
+const port = process.env.PORT || 3000; // caso esteja configurado variaveis de ambiente elas serão usadas se não houver porta 3000.
 
 app.use(express.json());
 
