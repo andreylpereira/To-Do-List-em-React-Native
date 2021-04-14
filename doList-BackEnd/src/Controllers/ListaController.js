@@ -1,6 +1,6 @@
-import ListaSchema from '../Schema/ListaSchema';
+// Arquivo para o CRUD, utilizando suas devidas rotas
 
-// renomeie os métodos da classe ListaControler para ficarem mais intuitivos. 
+import ListaSchema from '../Schema/ListaSchema'; 
 
 class ListaController {
 
@@ -14,6 +14,7 @@ class ListaController {
             console.log(error);
         }
     }
+
     async createTodo(req, res) {
         try {
             const todo = new ListaSchema({
@@ -30,6 +31,7 @@ class ListaController {
             res.status(500).send({ message: 'Falha ao cadastrar a Tarefa.' + error });
         }
     }
+
     async updateTodo(req, res) {
         try {
             const todo = await ListaSchema.findByIdAndUpdate(req.params.id);
