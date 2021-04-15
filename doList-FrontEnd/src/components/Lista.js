@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   FlatList,
@@ -66,6 +66,10 @@ const Lista = ({navigation}) => {
       console.log('DEU RUIM' + error);
     }
   }
+
+  useEffect(() => {
+    getTarefas();
+  }, [])
 
   const TextListas = ({item}) => {
     return (

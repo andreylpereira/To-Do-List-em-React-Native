@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, FlatList, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -18,6 +18,10 @@ const Home = ({navigation}) => {
       console.log('DEU RUIM' + error);
     }
   };
+
+  useEffect(() => {
+    getTarefas();
+  }, [])
 
   const TextTarefa = ({item}) => {
     return (
