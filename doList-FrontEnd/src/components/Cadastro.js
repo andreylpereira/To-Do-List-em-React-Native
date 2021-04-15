@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import DatePicker from 'react-native-datepicker'
 // Importei tambem o TouchableOpacity
 // Importei o axios
@@ -15,9 +15,9 @@ const Cadastro = ({ navigation }) => {
   // Criei uma constante que valida a nossa lista e adicionei o método post
   const createLista = async () => {
 
-    if (nomeLista && descricaoLista && dataLista){
-      try{
-        const response = await api.post('/novasTarefas', {"nome": nomeLista, "descricao": descricaoLista, "data": dataLista});
+    if (nomeLista && descricaoLista && dataLista) {
+      try {
+        const response = await api.post('/novasTarefas', { "nome": nomeLista, "descricao": descricaoLista, "data": dataLista });
         console.log(JSON.stringify(response.data));
       } catch (error) {
         console.log("DEU RUIM" + error);
@@ -25,6 +25,8 @@ const Cadastro = ({ navigation }) => {
     } else {
       console.log("Vazio")
     }
+    Keyboard.dismiss();
+    navigation.goBack();
   }
 
   // adicionei os valores da lista dentro do valor do campo e adicionei o onChange que set a variavel
@@ -33,7 +35,7 @@ const Cadastro = ({ navigation }) => {
       <View style={css.container}>
 
         <Text style={css.label}>Nome:</Text>
-        <TextInput style={css.input}  value={nomeLista} onChangeText={item => {
+        <TextInput style={css.input} value={nomeLista} onChangeText={item => {
           setNomeLista(item)
         }}></TextInput>
 
@@ -66,7 +68,7 @@ const Cadastro = ({ navigation }) => {
           setDescricaoLista(item)
         }}></TextInput>
 
-        <TouchableOpacity style={css.button} onPress={createLista}>
+        <TouchableOpacity style={css.button} onPress={() => createLista()}>
           <Text style={css.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
 
@@ -102,7 +104,7 @@ const css = StyleSheet.create({
     textDecorationLine: 'none',
     fontFamily: 'Montserrat-Regular',
     fontSize: 12,
-    textDecorationLine:'none',
+    textDecorationLine: 'none',
     elevation: 9.5,
 
   },
@@ -116,7 +118,7 @@ const css = StyleSheet.create({
     marginBottom: 15,
     textDecorationLine: 'none',
     fontSize: 12,
-    textDecorationLine:'none',
+    textDecorationLine: 'none',
     elevation: 12.5,
     fontFamily: 'Montserrat-Regular',
   },

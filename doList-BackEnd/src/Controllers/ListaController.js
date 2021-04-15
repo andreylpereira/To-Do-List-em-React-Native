@@ -48,7 +48,7 @@ class ListaController {
 
     async deleteTodo(req, res) {
         try {
-            const todo = await ListaSchema.findByIdAndRemove(id)
+            const todo = await ListaSchema.findByIdAndRemove(req.params.id)
             res.status(200).send({ message: 'Tarefa deletada com sucesso!' });
             console.log(todo);
         } catch (error) {

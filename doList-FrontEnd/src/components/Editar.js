@@ -14,7 +14,10 @@ const Editar = ({ route, navigation }) => {
   const [listas, setListas] = useState();
 
   function formatDate(date) {
-    return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+    let day = date.getDate().toString().padStart(2, "0");
+    let month = date.getMonth().toString().padStart(2, "0");
+
+    return `${day}/${month}/${date.getFullYear()}`;
   }
 
   const editTarefas = async (id) => {
