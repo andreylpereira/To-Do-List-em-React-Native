@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import DatePicker from 'react-native-datepicker'
 // Importei tambem o TouchableOpacity
 // Importei o axios
 import api from '../services/axios';
@@ -8,8 +9,9 @@ const Cadastro = ({ navigation }) => {
   // Criei uma constante com os valores da nossa lista
   const [nomeLista, setNomeLista] = useState("");
   const [descricaoLista, setDescricaoLista] = useState("");
-  const [dataLista, setDataLista] = useState("");
-
+  // const [dataLista, setDataLista] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
+  const dataLista = startDate
   // Criei uma constante que valida a nossa lista e adicionei o método post
   const createLista = async () => {
 
@@ -24,7 +26,7 @@ const Cadastro = ({ navigation }) => {
       console.log("Vazio")
     }
   }
-  
+
   // adicionei os valores da lista dentro do valor do campo e adicionei o onChange que set a variavel
   return (
     <>
@@ -36,9 +38,28 @@ const Cadastro = ({ navigation }) => {
         }}></TextInput>
 
         <Text style={css.label}>Data:</Text>
-        <TextInput style={css.input} value={dataLista} onChangeText={item => {
+        {/* <TextInput style={css.input} value={dataLista} onChangeText={item => {
           setDataLista(item)
-        }}></TextInput>
+        }}></TextInput> */}
+        <DatePicker
+          format="DD/MM/YYYY"
+          style={css.dateComponente}
+          date={startDate}
+          onDateChange={date => setStartDate(date)}
+          confirmBtnText="Confirmar"
+          cancelBtnText="Cancelar"
+          mode="date"
+          placeholder="Selecione uma data"
+          showIcon='false'
+          customStyles={{
+            dateInput: {
+              borderWidth: 0
+            },
+            dateIcon: {
+              showIcon: 'false'
+            }
+          }}
+        ></DatePicker>
 
         <Text style={css.label}>Descrição:</Text>
         <TextInput style={css.inputDescricao} multiline={true} value={descricaoLista} onChangeText={item => {
@@ -128,8 +149,17 @@ const css = StyleSheet.create({
     marginLeft: 55,
     textDecorationLine: 'none',
     elevation: 7.5,
+  },
+  dateComponente: {
+    width: 320,
+    marginLeft: 3,
+    marginBottom: 15,
+    borderWidth: 1,
+    borderRadius: 3.5,
+    borderColor: '#DE890B',
+    backgroundColor: '#FFFFFF',
+    elevation: 12.5,
   }
-
 });
 
 export default Cadastro;

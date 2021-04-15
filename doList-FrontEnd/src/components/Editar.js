@@ -1,20 +1,38 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-
-
+import DatePicker from 'react-native-datepicker'
 
 const Editar = ({ navigation }) => {
 
+  const [startDate, setStartDate] = useState(new Date());
+  const dataLista = startDate
 
   return (
     <>
 
       <View style={css.container}>
-
         <Text style={css.label}>Nome:</Text>
         <TextInput style={css.input}></TextInput>
         <Text style={css.label}>Data:</Text>
-        <TextInput style={css.input}></TextInput>
+        <DatePicker
+          format="DD/MM/YYYY"
+          style={css.dateComponente}
+          date={startDate}
+          onDateChange={date => setStartDate(date)}
+          confirmBtnText="Confirmar"
+          cancelBtnText="Cancelar"
+          mode="date"
+          placeholder="Selecione uma data"
+          showIcon='false'
+          customStyles={{
+            dateInput: {
+              borderWidth: 0
+            },
+            dateIcon: {
+              showIcon: 'false'
+            }
+          }}
+        ></DatePicker>
         <Text style={css.label}>Descrição:</Text>
         <TextInput style={css.inputDescricao} multiline={true}></TextInput>
 
@@ -96,12 +114,22 @@ const css = StyleSheet.create({
     color: '#410CF5',
     alignSelf: 'flex-start',
     marginLeft: 40,
-    fontSize: 16,
+    fontSize: 18,
     marginBottom: 6,
+    marginLeft: 55,
     textDecorationLine: 'none',
     elevation: 7.5,
+  },
+  dateComponente: {
+    width: 320,
+    marginLeft: 3,
+    marginBottom: 15,
+    borderWidth: 1,
+    borderRadius: 3.5,
+    borderColor: '#DE890B',
+    backgroundColor: '#FFFFFF',
+    elevation: 12.5,
   }
-
 });
 
 export default Editar;
