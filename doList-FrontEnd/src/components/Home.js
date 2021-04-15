@@ -5,43 +5,14 @@ import Icon from 'react-native-vector-icons/Feather';
 import api from '../services/axios';
 
 const Home = ({navigation}) => {
-  const tarefas_mock = [];
-  // const tarefas_mock = [
-  //   {
-  //     nome: 'Comprar pão na casa do joão',
-  //     descricao:
-  //       'compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa',
-  //     data: '23/10/1950',
-  //   },
-  //   {
-  //     nome:
-  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-  //     descricao:
-  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '24/10/1950',
-  //   },
-  //   {
-  //     nome:
-  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-  //     descricao:
-  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '24/10/1950',
-  //   },
-  //   {
-  //     nome:
-  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-  //     descricao:
-  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '24/10/1950',
-  //   },
-  // ]
+  const tarefas_mock = [];  
 
   const [tarefas, setTarefas] = useState(tarefas_mock);
 
   const getTarefas = async () => {
     try {
       const response = await api.get('/tarefas');
-      console.log(JSON.stringify(response));
+      console.log(response.data);
       setTarefas(response.data);
     } catch (error) {
       console.log('DEU RUIM' + error);
@@ -155,8 +126,6 @@ const css = StyleSheet.create({
     marginTop: 10,
     fontFamily: 'Montserrat-Medium',
   },
-
-
   
   card: {
     marginBottom: 25,
@@ -264,9 +233,7 @@ const css = StyleSheet.create({
     borderColor: '#C7C3C4',
     backgroundColor: '#4675C2',
     elevation: 7.5,
-  },
-
-  
+  },  
 });
 
 export default Home;
