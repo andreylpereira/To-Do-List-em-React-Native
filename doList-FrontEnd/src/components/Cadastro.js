@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-nativ
 // Importei o axios
 import api from '../services/axios';
 
+
 const Cadastro = ({ navigation }) => {
   // Criei uma constante com os valores da nossa lista
   const [nomeLista, setNomeLista] = useState("");
