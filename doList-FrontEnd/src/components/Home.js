@@ -1,54 +1,36 @@
-import React, {useState} from 'react';
-import {View, FlatList, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import React, { useState } from 'react';
+import { View, FlatList, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import api from '../services/axios';
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
   const tarefas_mock = [];
-  // const tarefas_mock = [
-  //   {
-  //     nome: 'Comprar pão na casa do joão',
-  //     descricao:
-  //       'compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa',
-  //     data: '23/10/1950',
-  //   },
-  //   {
-  //     nome:
-  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-  //     descricao:
-  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '24/10/1950',
-  //   },
-  //   {
-  //     nome:
-  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-  //     descricao:
-  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '24/10/1950',
-  //   },
-  //   {
-  //     nome:
-  //       'Aula Angular na jamaica com o bob marley doidao de ervas suspeitas',
-  //     descricao:
-  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '24/10/1950',
-  //   },
-  // ]
 
   const [tarefas, setTarefas] = useState(tarefas_mock);
 
   const getTarefas = async () => {
     try {
       const response = await api.get('/tarefas');
-      console.log(JSON.stringify(response));
+      console.log(JSON.stringify(response.data));
       setTarefas(response.data);
     } catch (error) {
       console.log('DEU RUIM' + error);
     }
   };
 
-  const TextTarefa = ({item}) => {
+  const deleteTarefa = async (id) => {
+    try {
+      const response = await api.delete(`/tarefas/${id}`)
+      console.log(JSON.stringify(response.data));
+    } catch (error) {
+      console.log('DEU RUIM' + error);
+    }
+  };
+
+  getTarefas();
+
+  const TextTarefa = ({ item }) => {
     return (
       <View>
         <View style={css.buttons}>
@@ -63,7 +45,7 @@ const Home = ({navigation}) => {
           </View>
           <View style={css.colorDelBorder}>
             <Icon
-              onPress={() => navigation.navigate('Sobre')}
+              onPress={() => deleteTarefa(item.id)}
               name="trash-2"
               color={'#410CF5'}
               size={24}
@@ -96,7 +78,7 @@ const Home = ({navigation}) => {
           </View>
         </View>
 
-        <TouchableOpacity style={css.buttonAtualizar} onPress={getTarefas}>
+        <TouchableOpacity style={css.buttonAtualizar} onPress={() => getTarefas()}>
           <Text style={css.buttonTextAtualizar}>Atualizar</Text>
         </TouchableOpacity>
 
@@ -157,7 +139,7 @@ const css = StyleSheet.create({
   },
 
 
-  
+
   card: {
     marginBottom: 25,
     marginLeft: '6%',
@@ -242,7 +224,7 @@ const css = StyleSheet.create({
     marginTop: 2.5,
   },
   colorDelBorder: {
-    alignItems:'center',
+    alignItems: 'center',
     color: '#FA2201',
     margin: 5,
     width: 35,
@@ -254,7 +236,7 @@ const css = StyleSheet.create({
     elevation: 7.5,
   },
   colorEdiBorder: {
-    alignItems:'center',
+    alignItems: 'center',
     color: '#4675C2',
     margin: 5,
     width: 35,
@@ -266,7 +248,7 @@ const css = StyleSheet.create({
     elevation: 7.5,
   },
 
-  
+
 });
 
 export default Home;

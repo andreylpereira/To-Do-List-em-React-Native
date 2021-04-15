@@ -5,6 +5,19 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-nativ
 
 const Editar = ({ navigation }) => {
 
+  const [listas, setListas] = useState();
+
+  const editTarefas = async () => {
+    try {
+      const response = await api.put(`/tarefas/${id}`);
+      console.log(JSON.stringify(response.data));
+      setListas(response.data);
+
+    } catch (error) {
+      console.log('DEU RUIM' + error);
+    }
+  }
+
 
   return (
     <>
@@ -55,7 +68,7 @@ const css = StyleSheet.create({
     textDecorationLine: 'none',
     fontFamily: 'Montserrat-Regular',
     fontSize: 12,
-    textDecorationLine:'none',
+    textDecorationLine: 'none',
     elevation: 9.5,
   },
   inputDescricao: {
@@ -68,7 +81,7 @@ const css = StyleSheet.create({
     marginBottom: 15,
     textDecorationLine: 'none',
     fontSize: 12,
-    textDecorationLine:'none',
+    textDecorationLine: 'none',
     fontFamily: 'Montserrat-Regular',
     elevation: 12.5,
   },

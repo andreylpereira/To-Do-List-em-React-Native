@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   FlatList,
@@ -9,57 +9,14 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 import api from '../services/axios';
 
-const Lista = ({navigation}) => {
-  // const tarefas_Mock = [
-  //   {
-  //     nome: 'Comprar pão na casa do joão',
-  //     descricao:
-  //       'compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aa',
-  //     data: '23/10/1950',
-  //   },
-  //   {
-  //     nome:
-  //       'Aula Angular na jamaica com o bob marley doidao de erv',
-  //     descricao:
-  //       'Assistir aula de Angular compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '24/10/1950',
-  //   },
-  //   {
-  //     nome: 'Aula React-native',
-  //     descricao:
-  //       'Assistir aula de React-native compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '25/10/1950',
-  //   },
-  //   {
-  //     nome: 'Aula Banco de dados',
-  //     descricao: 'Assistir aula de Banco de dados',
-  //     data: '26/10/1950',
-  //   },
-  //   {
-  //     nome: 'Aula javascript',
-  //     descricao:
-  //       'Assistir aula de javascript compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '27/10/1950',
-  //   },
-  //   {
-  //     nome: 'Aula javascript',
-  //     descricao:
-  //       'Assistir aula de javascript compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra compra pão na padaria pão doce pãoaaaaaaaaaaaa aa compra pão na padaria pão doce pãoaaaaaaaaaaaa aacompra',
-  //     data: '27/10/1950',
-  //   },
-  //   {
-  //     nome: 'Aula Banco de dados',
-  //     descricao: 'Assistir aula de Banco de dados',
-  //     data: '26/10/1950',
-  //   },
-  // ];
+const Lista = ({ navigation }) => {
 
   const [listas, setListas] = useState();
 
   const getTarefas = async () => {
     try {
       const response = await api.get('/tarefas');
-      console.log(JSON.stringify(response));
+      console.log(JSON.stringify(response.data));
       setListas(response.data);
 
     } catch (error) {
@@ -67,28 +24,31 @@ const Lista = ({navigation}) => {
     }
   }
 
-  const TextListas = ({item}) => {
+  getTarefas();
+
+
+  const TextListas = ({ item }) => {
     return (
       <View>
         <View style={css.buttons}>
-        <View style={css.colorEdiBorder}>
-        <Icon
-            onPress={() => navigation.navigate('Editar')}
-            name="edit-2"
-            color={'#410CF5'}
-            size={24}
-            style={css.colorEdi}
-          />
-        </View>
-        <View style={css.colorDelBorder}>
-          <Icon
-            onPress={() => navigation.navigate('Sobre')}
-            name="trash-2"
-            color={'#410CF5'}
-            size={24}
-            style={css.colorDel}
-          />
-        </View>
+          <View style={css.colorEdiBorder}>
+            <Icon
+              onPress={() => navigation.navigate('Editar')}
+              name="edit-2"
+              color={'#410CF5'}
+              size={24}
+              style={css.colorEdi}
+            />
+          </View>
+          <View style={css.colorDelBorder}>
+            <Icon
+              onPress={() => navigation.navigate('Sobre')}
+              name="trash-2"
+              color={'#410CF5'}
+              size={24}
+              style={css.colorDel}
+            />
+          </View>
         </View>
         <View style={css.card}>
           <Text style={css.header}>
@@ -103,13 +63,13 @@ const Lista = ({navigation}) => {
     <>
       <View style={css.container}>
         <View style={css.scroll}>
-            <FlatList
-              data={listas}
-              renderItem={TextListas}
-              keyExtractor={lista => lista.nome}
-              />
+          <FlatList
+            data={listas}
+            renderItem={TextListas}
+            keyExtractor={lista => lista.nome}
+          />
         </View>
-        <TouchableOpacity style={css.buttonCadastro} onPress={getTarefas}>
+        <TouchableOpacity style={css.buttonCadastro} onPress={() => getTarefas()}>
           <Text style={css.buttonText}>Atualizar</Text>
         </TouchableOpacity>
       </View>
@@ -158,7 +118,7 @@ const css = StyleSheet.create({
     height: '85%',
     width: '100%',
     paddingTop: 35,
-    
+
   },
   buttons: {
     display: 'flex',
@@ -190,7 +150,7 @@ const css = StyleSheet.create({
     marginTop: 2.5,
   },
   colorDelBorder: {
-    alignItems:'center',
+    alignItems: 'center',
     color: '#FA2201',
     margin: 5,
     width: 35,
@@ -202,7 +162,7 @@ const css = StyleSheet.create({
     elevation: 7.5,
   },
   colorEdiBorder: {
-    alignItems:'center',
+    alignItems: 'center',
     color: '#4675C2',
     margin: 5,
     width: 35,
