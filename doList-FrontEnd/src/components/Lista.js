@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   FlatList,
@@ -24,10 +24,11 @@ const Lista = ({ navigation }) => {
     }
   }
 
-  getTarefas();
+  useEffect(() => {
+    getTarefas();
+  }, [])
 
-
-  const TextListas = ({ item }) => {
+  const TextListas = ({item}) => {
     return (
       <View>
         <View style={css.buttons}>

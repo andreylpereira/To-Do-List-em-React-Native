@@ -1,43 +1,74 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import DatePicker from 'react-native-datepicker'
 
+import api from '../services/axios';
 
+const Editar = ({ route, navigation }) => {
+  const id = route.params._id;
 
-const Editar = ({ navigation }) => {
-
+  const [nomeLista, setNomeLista] = useState("");
+  const [descricaoLista, setDescricaoLista] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
+  const dataLista = startDate
   const [listas, setListas] = useState();
 
-  const editTarefas = async () => {
+  function formatDate(date) {
+    return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+  }
+
+  const editTarefas = async (id) => {
     try {
-      const response = await api.put(`/tarefas/${id}`);
+      const response = await api.put(`/tarefas/${id}`, { "nome": nomeLista, "descricao": descricaoLista, "data": formatDate(dataLista) });
       console.log(JSON.stringify(response.data));
-      setListas(response.data);
+      setListas(response.data)
 
     } catch (error) {
       console.log('DEU RUIM' + error);
     }
-  }
 
+    navigation.goBack();
+  }
 
   return (
     <>
-
       <View style={css.container}>
-
         <Text style={css.label}>Nome:</Text>
-        <TextInput style={css.input}></TextInput>
-        <Text style={css.label}>Data:</Text>
-        <TextInput style={css.input}></TextInput>
-        <Text style={css.label}>Descrição:</Text>
-        <TextInput style={css.inputDescricao} multiline={true}></TextInput>
+        <TextInput style={css.input} value={nomeLista} onChangeText={item => {
+          setNomeLista(item)
+        }}></TextInput>
+        <Text style={css.label} value={dataLista}>Data:</Text>
+        <DatePicker
+          format="DD/MM/YYYY"
+          style={css.dateComponente}
+          date={startDate}
+          onDateChange={date => setStartDate(date)}
+          confirmBtnText="Confirmar"
+          cancelBtnText="Cancelar"
+          mode="date"
+          placeholder="Selecione uma data"
+          showIcon='false'
+          customStyles={{
+            dateInput: {
+              borderWidth: 0
+            },
+            dateIcon: {
+              showIcon: 'false'
+            }
+          }}
+        ></DatePicker>
 
+        <Text style={css.label} >Descrição:</Text>
+        <TextInput style={css.inputDescricao} multiline={true} value={descricaoLista} onChangeText={item => {
+          setDescricaoLista(item)
+        }}
+        ></TextInput>
 
-        <TouchableOpacity style={css.button}>
+        <TouchableOpacity style={css.button} onPress={() => editTarefas(id)}>
           <Text style={css.buttonText}>Editar</Text>
         </TouchableOpacity>
 
       </View>
-
     </>
   );
 }
@@ -109,12 +140,22 @@ const css = StyleSheet.create({
     color: '#410CF5',
     alignSelf: 'flex-start',
     marginLeft: 40,
-    fontSize: 16,
+    fontSize: 18,
     marginBottom: 6,
+    marginLeft: 55,
     textDecorationLine: 'none',
     elevation: 7.5,
+  },
+  dateComponente: {
+    width: 320,
+    marginLeft: 3,
+    marginBottom: 15,
+    borderWidth: 1,
+    borderRadius: 3.5,
+    borderColor: '#DE890B',
+    backgroundColor: '#FFFFFF',
+    elevation: 12.5,
   }
-
 });
 
 export default Editar;

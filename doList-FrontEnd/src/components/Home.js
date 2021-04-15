@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, FlatList, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
 import api from '../services/axios';
 
@@ -23,12 +24,16 @@ const Home = ({ navigation }) => {
     try {
       const response = await api.delete(`/tarefas/${id}`)
       console.log(JSON.stringify(response.data));
+
     } catch (error) {
       console.log('DEU RUIM' + error);
     }
+    getTarefas();
   };
 
-  getTarefas();
+  useEffect(() => {
+    getTarefas();
+  }, [])
 
   const TextTarefa = ({ item }) => {
     return (
@@ -36,7 +41,7 @@ const Home = ({ navigation }) => {
         <View style={css.buttons}>
           <View style={css.colorEdiBorder}>
             <Icon
-              onPress={(() => navigation.navigate('Editar'))}
+              onPress={(() => navigation.navigate('Editar', { "_id": item._id }))}
               name="edit-2"
               color={'#410CF5'}
               size={24}
@@ -45,7 +50,7 @@ const Home = ({ navigation }) => {
           </View>
           <View style={css.colorDelBorder}>
             <Icon
-              onPress={() => deleteTarefa(item.id)}
+              onPress={() => deleteTarefa(item._id)}
               name="trash-2"
               color={'#410CF5'}
               size={24}
@@ -137,8 +142,6 @@ const css = StyleSheet.create({
     marginTop: 10,
     fontFamily: 'Montserrat-Medium',
   },
-
-
 
   card: {
     marginBottom: 25,
@@ -246,9 +249,7 @@ const css = StyleSheet.create({
     borderColor: '#C7C3C4',
     backgroundColor: '#4675C2',
     elevation: 7.5,
-  },
-
-
+  }
 });
 
 export default Home;
