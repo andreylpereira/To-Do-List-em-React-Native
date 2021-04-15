@@ -52,13 +52,9 @@ const Cadastro = ({ navigation }) => {
           cancelBtnText="Cancelar"
           mode="date"
           placeholder="Selecione uma data"
-          showIcon='false'
           customStyles={{
             dateInput: {
               borderWidth: 0
-            },
-            dateIcon: {
-              showIcon: 'false'
             }
           }}
         ></DatePicker>

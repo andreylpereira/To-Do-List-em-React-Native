@@ -33,7 +33,8 @@ const Home = ({ navigation }) => {
 
   useEffect(() => {
     getTarefas();
-  }, [])
+  }, [getTarefas()])
+
 
   const TextTarefa = ({ item }) => {
     return (

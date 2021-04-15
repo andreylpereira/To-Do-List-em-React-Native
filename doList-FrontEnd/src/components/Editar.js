@@ -13,16 +13,16 @@ const Editar = ({ route, navigation }) => {
   const dataLista = startDate
   const [listas, setListas] = useState();
 
-  function formatDate(date) {
-    let day = date.getDate().toString().padStart(2, "0");
-    let month = date.getMonth().toString().padStart(2, "0");
+  // function formatDate(date) {
+  //   let day = date.getDate().toString().padStart(2, "0");
+  //   let month = date.getMonth().toString().padStart(2, "0");
 
-    return `${day}/${month}/${date.getFullYear()}`;
-  }
+  //   return `${day}/${month}/${date.getFullYear()}`;
+  // }
 
   const editTarefas = async (id) => {
     try {
-      const response = await api.put(`/tarefas/${id}`, { "nome": nomeLista, "descricao": descricaoLista, "data": formatDate(dataLista) });
+      const response = await api.put(`/tarefas/${id}`, { "nome": nomeLista, "descricao": descricaoLista, "data": dataLista });
       console.log(JSON.stringify(response.data));
       setListas(response.data)
 
@@ -50,14 +50,10 @@ const Editar = ({ route, navigation }) => {
           cancelBtnText="Cancelar"
           mode="date"
           placeholder="Selecione uma data"
-          showIcon='false'
           customStyles={{
             dateInput: {
               borderWidth: 0
             },
-            dateIcon: {
-              showIcon: 'false'
-            }
           }}
         ></DatePicker>
 
